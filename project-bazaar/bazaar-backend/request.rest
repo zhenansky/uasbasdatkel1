@@ -1,0 +1,27 @@
+GET http://localhost:5000/items/
+
+###
+GET http://localhost:5000/users/638bfd6d1e66962866538d6f
+
+###
+POST http://localhost:5000/items
+Content-Type: application/json
+
+{
+    "name" : "Susu",
+    "price" : "9000",
+    "stok" : "10"
+}
+
+###
+PATCH http://localhost:5000/items/638f49acc5d0286b41ed4974
+Content-Type: application/json
+
+{
+    "name" : "Donut",
+    "price" : 13000,
+    "stok" : 5
+}
+
+###
+DELETE http://localhost:5000/items/63a1b615e6a0e31a42ac0406
