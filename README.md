@@ -26,3 +26,5 @@
 ###  Menjalankan Aplikasi Fullstack
 - Memasuki / cd ke folder 'backend', jalankan **nodemon app**
 - Memasuki / cd ke folder 'frontent', jalankan **npm start**
+### Link Video Presentasi
+https://github.com/zhenansky/uasbasdatkel1
