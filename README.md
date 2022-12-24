@@ -20,9 +20,9 @@
 
  
 ### Menyiapkan Aplikasi Fullstack
-- Mendownload source code nya : https://github.com/tegar-anggana/uas-manajemen-basis-data
+- Mendownload source code nya : https://github.com/zhenansky/uasbasdatkel1
 - Memasuki / cd ke folder 'backend', jalankan **npm install**
 - Memasuki / cd ke folder 'frontend', jalankan **npm install**
 ###  Menjalankan Aplikasi Fullstack
-- Memasuki / cd ke folder 'backend', jalankan **npm run dev**
+- Memasuki / cd ke folder 'backend', jalankan **nodemon app**
 - Memasuki / cd ke folder 'frontent', jalankan **npm start**
