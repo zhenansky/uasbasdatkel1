@@ -1,5 +1,5 @@
 # UAS Manajemen Basis Data Kelompok 1
-## (Link Video Youtube)
+## (Link Video Youtube)https://youtu.be/Wnf6-ALMQBg
 ## Anggota Kelompok 1
 |NIM|Nama|
 |--|--|
