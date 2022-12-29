@@ -18,6 +18,16 @@ export const getItemById  = async (req, res) => {
     }
 }
 
+export const getItemByIdBazaar  = async (req, res) => {
+    var idBaazar = req.params.id;
+    try{
+        const item = await Item.find({id_bazaar: idBaazar});
+        res.json(item);
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 export const saveItem  = async (req, res) => {
     const item = new Item(req.body);
     try{

@@ -4,10 +4,12 @@ import React from 'react';
 import Login from './component/login/Login';
 import Register from './component/register/Register'
 import Bazaar from './component/bazaar/Bazaar_home'
-import formDaftar from './component/bazaar/formDaftar'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Additem from './component/bazaar/add_items';
 import Edititem from './component/bazaar/edit_items';
+import Homeadmin from './component/admin/Home_admin';
+import Formdaftar from './component/bazaar/form_daftar';
+import Cetakpdf from './component/bazaar/Cetakpdf';
 
 const router = createBrowserRouter([
   {
@@ -27,17 +29,26 @@ const router = createBrowserRouter([
     element:<Bazaar/>
   },
   {
-    path:"/bazaar-daftar",
-    element:<formDaftar/>
-  },
-  {
     path:"/addItem",
     element:<Additem/>
   },
   {
     path:"/edit/:id",
     element:<Edititem/>
+  },
+  {
+    path:"/homeadmin",
+    element:<Homeadmin/>
+  },
+  {
+    path:"/form-daftar",
+    element:<Formdaftar/>
+  },
+  {
+    path:"/cetakpdf",
+    element:<Cetakpdf/>
   }
+  
 
 ])
 

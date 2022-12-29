@@ -1,28 +1,13 @@
 .page-login, .page-register{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
   background-image: url('background_relog.svg');
-}
-
-.page-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 180px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   width: 28%;
-  padding: 20px 10px;
 }
 
-.icon-form-login {
-  display: flex;
-  justify-content: center;
-}
 
 .form-username, .form-password, .form-name, .form-confirm {
   margin: 0;

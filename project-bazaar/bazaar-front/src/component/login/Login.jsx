@@ -3,10 +3,10 @@ import './login.css';
 import {Link} from "react-router-dom";
 export default function login() {
   return (
-  <div className="page-login">
-    <div className="page-form">
-      <div className="form p-8 bg-beige rounded-lg shadow-lg">
-        <div className="icon-form-login mb-2">
+  <div className="page-login flex flex-col h-screen w-screen ">
+    <div className="page-form flex justify-center mt-44 lg:mt-32 lg:h-3/5">
+      <div className="form flex flex-col h-fit w-3/5 p-8 bg-beige rounded-lg shadow-lg lg:w-2/5">
+        <div className="icon-form-login mb-2 flex justify-center">
           <i className="fa-solid fa-right-to-bracket text-blue-600 text-6xl mb-5"></i>
         </div>
         <div className="pembungkus-form gap-7 h-20">
@@ -36,6 +36,11 @@ export default function login() {
         </Link>
         <div className="form-forgot text-blue-600 mt-1">
           <a href="#">Forgot your password</a>
+        </div>
+        <div className='belum-akun text-blue-600 mt-1'>
+          <Link to='/Register'>
+          <p>Belum Punya Akun?</p>
+          </Link>
         </div>
       </div>
     </div>

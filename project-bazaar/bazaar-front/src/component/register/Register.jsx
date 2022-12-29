@@ -1,11 +1,12 @@
 import React from 'react';
 import '../login/login.css';
+import { Link } from 'react-router-dom';
 export default function login() {
   return (
-  <div className="page-register">
-    <div className="page-form mt-32">
-      <div className="form p-8 bg-beige rounded-lg shadow-lg">
-        <div className="icon-form-login mb-2">
+  <div className="page-register flex flex-col h-screen w-screen">
+    <div className="page-form flex justify-center mt-32">
+      <div className="form flex-col w-3/5 p-8 bg-beige rounded-lg shadow-lg">
+        <div className="icon-form-login mb-2 flex justify-center">
           <i class="fa-regular fa-address-card text-blue-600 text-6xl mb-7"></i>
         </div>
         
@@ -55,7 +56,9 @@ export default function login() {
           <a href="">Register</a>
         </div>
         <div className="form-forgot text-blue-600 mt-1">
-          <a href="#">Already Have Account?</a>
+          <Link to='/Login'>
+          <p>Sudah Punya Akun?</p>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,9 +4,17 @@ table {
     width: 100%;
   }
   
-  td, th {
+  th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
   }
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  
   

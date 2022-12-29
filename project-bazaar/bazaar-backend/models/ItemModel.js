@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const Item = mongoose.Schema({
-    name:{
+    id_bazaar:{
+        type: String,
+        requried: true
+    },
+    nama:{
         type: String,
         reuqired: true
     },
