@@ -12,7 +12,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import convertRupiah from 'rupiah-format';
 import { BiArrowBack } from 'react-icons/bi';
 import { useAtom } from 'jotai';
-import { bazaarById, itemsByIdBaazar } from '../../globalTv';
+import { bazaarById, itemhasil, itemsByIdBaazar, itemtotal } from '../../globalTv';
 
 export default function Bazaar_home() {
   const [displayResponsive, setDisplayResponsive] = useState(false);
@@ -44,9 +44,8 @@ export default function Bazaar_home() {
     );
   };
 
-  const [Items, setItems] = useState([]);
-  const [itemtotal, setItemtotal] = useState(0); 
-  const [itemhasil, setItemhasil] = useState(0);
+  const [itemtotalState, setItemtotalState] = useAtom(itemtotal); 
+  const [itemhasilState, setItemhasilState] = useAtom(itemhasil);
   const [itemsByIdBazaarState, setItemsByIdBazaarState] = useAtom(itemsByIdBaazar)
 
   useEffect(() => () => {
@@ -59,14 +58,14 @@ export default function Bazaar_home() {
       itemsByIdBazaarState.forEach((j => {
         hasil = total * 80 / 100
       }))
-      setItemtotal(total);
-      setItemhasil(hasil);
+      setItemtotalState(total);
+      setItemhasilState(hasil);
     },[itemsByIdBazaarState])  
 
     
     
-  const hostname = '192.168.1.30';
-  // const hostname = '192.168.100.10';
+  // const hostname = '192.168.1.30';
+  const hostname = '192.168.100.10';
   const getItems = async () => {
     try {
       const response = await axios.get(`http://${hostname}:5000/items/milik/${bazaarByIdState._id}`);
@@ -214,11 +213,11 @@ export default function Bazaar_home() {
               <form class="lg:w-full lg:mx-24">
                 <div className="">
                   <label className="text-xl font-bold">Hasil :</label>
-                  <input value={convertRupiah.convert(itemtotal)} className="w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray" type="text" readOnly />
+                  <input value={convertRupiah.convert(itemtotalState)} className="w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray" type="text" readOnly />
                 </div>
                 <div className="">
                   <label className="text-xl font-bold">Hasil (Dipotong Fee Admin 20%)</label>
-                  <input value={convertRupiah.convert(itemhasil)} className="w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray" type="text" readOnly placeholder="80000" />
+                  <input value={convertRupiah.convert(itemhasilState)} className="w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray" type="text" readOnly placeholder="80000" />
                 </div>
               </form>
             </div>

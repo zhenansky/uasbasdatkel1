@@ -13,8 +13,8 @@ function Edititem() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const hostname = '192.168.1.30';
-  // const hostname = "192.168.100.10";
+  // const hostname = '192.168.1.30';
+  const hostname = "192.168.100.10";
 
   useEffect(() => {
     getItemsById();

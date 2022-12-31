@@ -13,8 +13,8 @@ function Additem() {
   const [price, setPrice] = useState('');
   const [stok, setStok] = useState('');
   const navigate = useNavigate();
-  const hostname = '192.168.1.30';
-  // const hostname = "192.168.100.10";
+  // const hostname = '192.168.1.30';
+  const hostname = "192.168.100.10";
 
   const [bazaarByIdState, setBazaarByIdState] = useAtom(bazaarById);
   const id_bazaar = bazaarByIdState._id;

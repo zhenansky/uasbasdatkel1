@@ -14,8 +14,8 @@ export default function Form_daftar() {
   const [namaPemilik, setNamaPemilik] = useState('');
   const navigate = useNavigate();
 
-  const hostname = '192.168.1.30';
-  // const hostname = "192.168.100.10";
+  // const hostname = '192.168.1.30';
+  const hostname = "192.168.100.10";
 
   const saveBazaar = async (e) => {
     e.preventDefault();

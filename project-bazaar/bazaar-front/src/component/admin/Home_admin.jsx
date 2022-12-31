@@ -7,18 +7,32 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useAtom } from 'jotai';
-import { bazaarById } from '../../globalTv';
+import { bazaarById, itemsByIdBaazar } from '../../globalTv';
 
 export default function Home_admin() {
   const [bazaars, setBazaars] = useState([]);
   const [bazaarByIdState, setBazaarByIdState] = useAtom(bazaarById); 
+  const [itemsByIdBazaarState, setItemsByIdBazaarState] = useAtom(itemsByIdBaazar)
+
   useEffect(() => {
     getBazaars();
+    getItems();
   }, [bazaars]);
  
 
-  const hostname = '192.168.1.30';
-  // const hostname = '192.168.100.10';
+  const getItems = async () => {
+    try {
+      const response = await axios.get(`http://${hostname}:5000/items/milik/${bazaarByIdState._id}`);
+      setItemsByIdBazaarState(response.data);
+    } catch (err) {
+      const response = await axios.get(`http://localhost:5000/items/milik/${bazaarByIdState._id}`);
+      setItemsByIdBazaarState(response.data);
+    }
+  };
+
+
+  // const hostname = '192.168.1.30';
+  const hostname = '192.168.100.10';
   const getBazaars = async () => {
     try {
       const response = await axios.get(`http://${hostname}:5000/bazaars`);
@@ -28,6 +42,26 @@ export default function Home_admin() {
       setBazaars(response.data);
     }
   };
+
+  const deleteItem = async (id) => {
+    try {
+      await axios.delete(`http://${hostname}:5000/items/${id}`);
+      getItems();
+    } catch (error) {
+      await axios.delete(`http://localhost:5000/items/${id}`);
+    }
+  };
+
+  const deleteBazaar = async () => {
+    try {
+      await axios.delete(`http://${hostname}:5000/items/milik/${bazaarByIdState._id}`);
+      getItems();
+    } catch (error) {
+      await axios.delete(`http://localhost:5000/items/milik/${bazaarByIdState._id}`);
+    }
+  };
+
+
 
   return (
     <>
@@ -50,14 +84,14 @@ export default function Home_admin() {
         <div className="judul-page mt-4 ml-3 text-2xl">
           <p>List Bazaar</p>
         </div>
-        <div className="tabel-admin w-screen mt-2">
+        <div className="tabel-admin flex flex-col w-screen mx-2 mt-4 lg:w-full lg:mx-0">
           <table>
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Bazaar</th>
+                <th scope="col" className='w-8'>No</th>
+                <th scope="col" className='w-1/5'>Nama Bazaar</th>
                 <th scope="col">Pemilik</th>
-                <th scope="col">Aksi</th>
+                <th scope="col" colSpan='2' className='w-0'>Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -66,26 +100,36 @@ export default function Home_admin() {
                   <td>{index + 1}</td>
                   <td>{bazaarr.namaBazaar}</td>
                   <td>{bazaarr.namaPemilik}</td>
-                  <td>
+                  <td className=''>
                     <Link to="/bazaar">
-                     <Button label="Tangani" className="p-button-rounded" onClick={() => {
+                     <Button label="" icon="pi pi-cart-plus" className="fit w-28 h-8" onClick={() => {
                       setBazaarByIdState(bazaarr)
                      }}/>
                     </Link>
                   </td>
-                  <td>
-                  {/* <Button
-                        onClick={() => {
-                          confirm2();
-                        }}
-                        icon="pi pi-trash"
-                        className="p-button-danger fit w-28 h-8"
-                  ></Button> */}
+                  <td className=''>
+                  <Button onClick={() => {deleteItem(); deleteBazaar();}} icon="pi pi-trash" className="p-button-danger fit w-28 h-8"></Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="fixed bottom-4 right-4 ">
+          <Link to="/form-daftar">
+            <Button
+              icon="pi pi-plus"
+              style={{
+                width: '70px',
+                height: '70px',
+                backgroundColor: 'blue',
+                borderRadius: '100%',
+                color: 'white',
+                border: 'none',
+                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+              }}
+            />
+          </Link>
         </div>
       </div>
     </>
